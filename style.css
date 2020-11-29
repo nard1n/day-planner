@@ -10,10 +10,12 @@ textarea{
   resize: none;
   color: #000000;
   border-left: 1px solid black;
+  height: 80px;
   padding: 10px;
+  min-width: 95%;
 }
 
-tr {
+div {
   line-height: 80px;
 }
 
@@ -34,20 +36,22 @@ tr {
   border-radius: 15px;
 }
 
-.row {
+.rows {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid blueviolet;;
+  border-top: 1px solid white; /*white*/
 }
 
 .save-icon {
   height: 22px;
+  filter: invert(1);
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  border-radius: 0px;
   width: 5%;
 }
 
@@ -70,9 +74,10 @@ tr {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border-right: white;
   background-color: #06AED5;
   color: white;
-  width: 10%;
+  width: 80%;
   text-align: center;
 }
 
