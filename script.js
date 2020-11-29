@@ -2,15 +2,18 @@ var currentDay = $("#current-day");
 var containerDisplay = $(".container");
 
 let date = moment().format('MMMM Do YYYY');
-let hour = moment().format('h'); // to test - currentDay.innerHTML = date + " " + hour;
+let currentTime = moment().format('LT');
+let hour = parseInt(moment().format('HH')); // to test - currentDay.innerHTML = date + ", " + hour;
 
-currentDay.text(date); // to insert today's date on scheduler
+currentDay.text(date + ", " + currentTime); // to insert today's date on scheduler
 
-let timeArray = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+//loop through the array creating a new row within the container for each biz hour
+let timeArray = [9, 10, 11, 12, 13, 14, 15, 16, 17]; //array for biz hour of day
+let entryObject = {}; //local storage objects
 
 for (let i = 0; i < 9; i++) {
 
-    // new row
+    // to create new row
     let hourRow = $('<div>');
 
     // time column
@@ -27,13 +30,18 @@ for (let i = 0; i < 9; i++) {
      // save image
     let img = $('<img>');
     img.attr('src', "./Assets/save.png");
-    img.attr('class', 'save-icon')
+    img.attr('class', 'save-icon');
     saveButton.append(img);
     
     //console.log(timeArray[i]); //to test for loop logs
 
-    // variable for row color
-    var backgroundColor;
+    //if statement to check if anything is present in local storage and creates new entry on load
+    if (localStorage.getItem("entry" + timeArray[i])=="") {
+        entryObject[timeArray[i]] = localStorage.getItem("entry" + timeArray[i]);
+        localStorage.setItem("entry" + timeArray[i], "");
+    } else {
+       
+    }
 
     //logic to determine time displayed
     function determineAMPM (hour) {
@@ -44,19 +52,21 @@ for (let i = 0; i < 9; i++) {
         }
     }
 
-    // logic for determining background color
-    function determineRowColor() {
-        if (i < hour) {
-            return backgroundColor = "past";
-        } else if (i == hour) {
-            return backgroundColor = "present";
+    //logic for determining background color
+    function determineRowColor(time) {
+        if (time<hour) {
+            return backgroundColor="past";
+        }
+        else if (time==hour) {
+            return backgroundColor="present";
+            
         } else {
-            return backgroundColor = "future";
+            return backgroundColor="future";
         }
     }
 
     // creating new row
-    hourRow.attr("class", "row rows d-flex text-center text-center align-items-center");
+    hourRow.attr("class", "row rows text-center ");
     //$('div').append(hourRow); for initial test
 
 
@@ -67,14 +77,18 @@ for (let i = 0; i < 9; i++) {
 
 
     //creating text area
-    taskCol.attr("class", "col-9 rows form-group " );
-    taskForm.attr("class", "form-control-plaintext");
+    determineRowColor(timeArray[i]);
+    taskCol.attr("class", "col-9 rows " + backgroundColor);
+    formTextArea.attr("class", "form-control-plaintext");
+    formTextArea.attr("id", "text-area-" + timeArray[i]);
+    formTextArea.text(localStorage.getItem("entry" + timeArray[i]));
 
     //creating save button
-    saveCol.attr("class","col-2 rows");
+    saveCol.attr("class","col-2 rows padding-0");
     saveButton.attr("class", "saveBtn");
+    saveButton.attr("data-number", timeArray[i]);
 
-    //append columns into row
+    //appending columns into rows
     hourRow.append(timeCol);
 
     hourRow.append(taskCol);
@@ -84,10 +98,20 @@ for (let i = 0; i < 9; i++) {
     hourRow.append(saveCol);
     saveCol.append(saveButton);
 
-    //containerDisplay.append(hourRow);
     containerDisplay.append(hourRow);
+
 }
 
-//saveBtn on("click", funtion(){...})
+//click handler funciton to save user entries when button is clicked
+$(".saveBtn").on("click",function() {
+    // storing data-number from button pressed
+    let index = $(this).attr("data-number");
+     //console.log(index);
 
+    // using index to access text area class
+    let selectedTextInput= $("#text-area-"+index).val();
+    console.log(selectedTextInput);
 
+    //setting text area to item in local storage at that entry
+    localStorage.setItem("entry" + index,selectedTextInput); 
+})

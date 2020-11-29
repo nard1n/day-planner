@@ -11,8 +11,8 @@ textarea{
   color: #000000;
   border-left: 1px solid black;
   height: 80px;
-  padding: 10px;
-  min-width: 95%;
+  padding: 10px 0;
+  min-width: 100%;
 }
 
 div {
@@ -39,7 +39,13 @@ div {
 .rows {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white; /*white*/
+  border-top: 1px solid white;
+}
+
+/* to eliminate padding on save column */
+.padding-0 {
+  padding: 0px;
+  width: 100%;
 }
 
 .save-icon {
@@ -77,7 +83,7 @@ div {
   border-right: white;
   background-color: #06AED5;
   color: white;
-  width: 80%;
+  width: 100%;
   text-align: center;
 }
 
