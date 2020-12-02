@@ -21,7 +21,8 @@ The purpose of the application is to allow users to add important events to the 
    * If page is refreshed, the notes are rendered from the local storage
 
 ### Screenshot of Application:
-Will be added to the Assets folder in the repository
+<img src="./Assets/day-planner1.png" width="200">
+![](.Assets/day-planner1.png)
 
 
 ## Table of Contents (Optional)
