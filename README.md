@@ -21,8 +21,8 @@ The purpose of the application is to allow users to add important events to the 
    * If page is refreshed, the notes are rendered from the local storage
 
 ### Screenshots of Application:
-![]("./Assets/screenshot-workday-scheduler.png")
-![]("./Assets/day-planner1.png")
+![](./Assets/screenshot-workday-scheduler.png)
+![](./Assets/day-planner1.png)
 
 Screenshot video of app functionality can be found in the Assets folder
 
