@@ -23,9 +23,8 @@ The purpose of the application is to allow users to add important events to the 
 ### Screenshots of Application:
 ![](.Assets/screenshot-workday-scheduler.png)
 ![](.Assets/day-planner1.png)
-### Short video of functionality
-![](.Assets/video-of-workday-scheduler.mov)
 
+Screenshot video of app functionality can be found in the Assets folder
 
 ## Table of Contents (Optional)
 
